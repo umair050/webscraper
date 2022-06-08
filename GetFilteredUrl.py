@@ -77,32 +77,32 @@ def get_filter():
                 driver.get(url[0])
                 filter_data(url[0])
 
-                # if BeautifulSoup(driver.page_source, 'html.parser').find("nav"):
-                #     nav_links = BeautifulSoup(driver.page_source, 'html.parser').find("nav").findChildren("a",
-                #                                                                                           href=True)
-                #     for link in nav_links:
-                #         if sheet_flag_1 == 1 and sheet_flag_2 == 1 and sheet_flag_3 == 1:
-                #             break
-                #         print("Flag 1 =" + str(sheet_flag_1))
-                #         print("Flag 2 =" + str(sheet_flag_2))
-                #         print("Flag 3 =" + str(sheet_flag_3))
-                #         link = link['href']
-                #         print(link)
-                #         if len(link) == 0:
-                #             continue
-                #         if link[0] == "/":
-                #             link = url[0] + link
-                #             driver.get(link)
-                #             # time.sleep(10)
-                #             filter_data(url[0])
-                #         elif link[0] == "h":
-                #             link = link
-                #             driver.get(link)
-                #             # time.sleep(10)
-                #             filter_data(url[0])
-                #         else:
-                #             continue
-                #     print(nav_links)
+                if BeautifulSoup(driver.page_source, 'html.parser').find("nav"):
+                    nav_links = BeautifulSoup(driver.page_source, 'html.parser').find("nav").findChildren("a",
+                                                                                                          href=True)
+                    for link in nav_links:
+                        if sheet_flag_1 == 1 and sheet_flag_2 == 1 and sheet_flag_3 == 1:
+                            break
+                        print("Flag 1 =" + str(sheet_flag_1))
+                        print("Flag 2 =" + str(sheet_flag_2))
+                        print("Flag 3 =" + str(sheet_flag_3))
+                        link = link['href']
+                        print(link)
+                        if len(link) == 0:
+                            continue
+                        if link[0] == "/":
+                            link = url[0] + link
+                            driver.get(link)
+                            # time.sleep(10)
+                            filter_data(url[0])
+                        elif link[0] == "h":
+                            link = link
+                            driver.get(link)
+                            # time.sleep(10)
+                            filter_data(url[0])
+                        else:
+                            continue
+                    print(nav_links)
 
             except selenium.common.exceptions.TimeoutException:
                 continue
